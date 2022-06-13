@@ -19,6 +19,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool loved = false;
+
   List estates = [
     'بيت',
     'شقة',
@@ -337,21 +339,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 38,
-                    width: 49,
-                    decoration: BoxDecoration(
-                        // color: Colors.red,
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Center(
-                      child: IconButton(
-                        icon: Icon(Icons.edit),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                  Spacer(),
+
                   Container(
                     // padding: EdgeInsets.only(left: 30),
                     height: 38,
@@ -365,6 +353,20 @@ class _HomePageState extends State<HomePage> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),
                       ),
+                    ),
+                  ),
+                  Spacer(),
+
+                  Container(
+                    height: 38,
+                    width: 49,
+                    decoration: BoxDecoration(
+                      // color: Colors.red,
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () {},
                     ),
                   ),
                 ],
@@ -386,49 +388,48 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                child: GridView.builder(
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        mainAxisSpacing: 8,
-                        crossAxisSpacing: 4),
-                    itemCount: 8,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(3),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 1.0,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 9),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/Facebook_Logo.png',
-                                  height: 40,
-                                  width: 40,
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Center(
-                                    child: Text(
-                                  estates[index],
-                                  style: TextStyle(fontWeight: FontWeight.w500),
-                                )),
-                              ],
-                            ),
+              GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      mainAxisSpacing: 8,
+                      crossAxisSpacing: 4),
+                  itemCount: 8,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(3),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(
+                            color: Colors.grey,
+                            width: 1.0,
                           ),
                         ),
-                      );
-                    }),
-              ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 9),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                'assets/images/Facebook_Logo.png',
+                                height: 40,
+                                width: 40,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Center(
+                                  child: Text(
+                                estates[index],
+                                style: TextStyle(fontWeight: FontWeight.w500),
+                              )),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+
               SizedBox(
                 height: 15,
               ),
@@ -443,10 +444,117 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              ElevatedButton(
-                style: E,
-                  onPressed: (){},
-                  child: Text('مشاهدة المزيد'))
+              Column(
+                children: [
+                  Container(
+                    height: 100,
+                    width: double.infinity,
+                    child: Card(
+                        margin: EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+
+                        child: Padding(
+                          padding: const EdgeInsets.all(18),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/Facebook_Logo.png',
+                                height: 40,
+                                width: 40,
+                              ),
+                              SizedBox(width: 20,),
+                              Column(
+                                children: [
+                                  Text('بيت للبيع في جنوب اللبان'),
+                                  Text('9 ساعه'),
+                                  Text('للايجار فيلا في بيروت'),
+                                ],
+                              ),
+                              Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    loved = !loved;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.favorite,
+                                  color: loved ? Color(0xffDC180F) : Colors.black,
+
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                    width: double.infinity,
+                    child: Card(
+                        margin: EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+
+                        child: Padding(
+                          padding: const EdgeInsets.all(18),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/Facebook_Logo.png',
+                                height: 40,
+                                width: 40,
+                              ),
+                              SizedBox(width: 20,),
+                              Column(
+                                children: [
+                                  Text('بيت للبيع في جنوب اللبان'),
+                                  Text('9 ساعه'),
+                                  Text('للايجار فيلا في بيروت'),
+                                ],
+                              ),
+                              Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    loved = !loved;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.favorite,
+                                  color: loved ? Color(0xffDC180F) : Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                    ),
+                  ),
+
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromARGB(255, 1, 112, 202)),
+                  width: MediaQuery.of(context).size.width,
+                  child: FlatButton(
+                    child: Text(
+                      'مشاهدة المزيد',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'Tajawal',
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      // signIn(emailController.text, passwordController.text);
+                      RouterHelper.routerHelper
+                          .routingToSpecificWidget(HomePage());
+                    },
+                  ),
+                ),
+              ),
               // GridWidget(),
               // Padding(
               //   padding: EdgeInsets.all(10),
