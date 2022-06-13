@@ -300,157 +300,190 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'دليل عقارات لبنان للبيع والايجار ',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  '،أهلاً بك',
-                  // textAlign: TextAlign.end,
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset('assets/images/main.png')),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Container(
-                  height: 38,
-                  width: 49,
-                  decoration: BoxDecoration(
-                      // color: Colors.red,
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: IconButton(
-                      icon: Icon(Icons.edit),
-                      onPressed: () {},
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'دليل عقارات لبنان للبيع والايجار ',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '،أهلاً بك',
+                    // textAlign: TextAlign.end,
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.asset('assets/images/main.png')),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Container(
+                    height: 38,
+                    width: 49,
+                    decoration: BoxDecoration(
+                        // color: Colors.red,
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {},
+                      ),
                     ),
                   ),
-                ),
-                Spacer(),
-                Container(
-                  // padding: EdgeInsets.only(left: 30),
-                  height: 38,
-                  width: 288,
-                  // width: MediaQuery.of(context).size.width / 1.4,
-                  child: TextFormField(
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(fontSize: 12),
-                      hintText: 'اكتب المنطقة للبحث',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                  Spacer(),
+                  Container(
+                    // padding: EdgeInsets.only(left: 30),
+                    height: 38,
+                    width: 288,
+                    // width: MediaQuery.of(context).size.width / 1.4,
+                    child: TextFormField(
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintStyle: TextStyle(fontSize: 12),
+                        hintText: 'اكتب المنطقة للبحث',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  'نوع العقار',
-                  // textAlign: TextAlign.right,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    'نوع العقار',
+                    // textAlign: TextAlign.right,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            // Container(
-            //   child: GridView.builder(
-            //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //           crossAxisCount:
-            //               (Orientation == Orientation.portrait ? 2 : 3),
-            //           mainAxisSpacing: 5,
-            //           crossAxisSpacing: 5),
-            //       itemCount: 5,
-            //       itemBuilder: (context, index) {
-            //         return Container(
-            //           decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(15),
-            //               color: Colors.red),
-            //           child: Column(
-            //             children: [
-            //               Image.asset(
-            //                 'assets/images/Facebook_Logo.png',
-            //                 height: 150,
-            //                 width: 150,
-            //               ),
-            //               Row(
-            //                 children: [
-            //                   Expanded(child: Text('chair', maxLines: 1)),
-            //                 ],
-            //               )
-            //             ],
-            //           ),
-            //         );
-            //       }),
-            // )
-            // GridWidget(),
-            // Padding(
-            //   padding: EdgeInsets.all(10),
-            //   child: GridView.count(
-            //     shrinkWrap: false,
-            //     crossAxisCount: 3,
-            //     mainAxisSpacing: 4.0,
-            //     crossAxisSpacing: 8.0,
-            //     children: List.generate(6, (index) {
-            //       return Container(
-            //         height: 50,
-            //         width: 50,
-            //         decoration: BoxDecoration(
-            //             color: Colors.black, border: Border.all()),
-            //         child: Text('Nada'),
-            //       );
-            //     }),
-            //   ),
-            // ),
-            // GridView.builder(
-            //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            //         maxCrossAxisExtent: 200,
-            //         childAspectRatio: 3 / 2,
-            //         crossAxisSpacing: 20,
-            //         mainAxisSpacing: 20),
-            //     itemCount: estates.length,
-            //     itemBuilder: (BuildContext ctx, index) {
-            //       return Container(
-            //         alignment: Alignment.center,
-            //         child: Text(estates[index]),
-            //         decoration: BoxDecoration(
-            //             color: Colors.amber,
-            //             borderRadius: BorderRadius.circular(15)),
-            //       );
-            //     }),
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child: GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 4),
+                    itemCount: 8,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(3),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                              color: Colors.grey,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 9),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/images/Facebook_Logo.png',
+                                  height: 40,
+                                  width: 40,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Center(
+                                    child: Text(
+                                  estates[index],
+                                  style: TextStyle(fontWeight: FontWeight.w500),
+                                )),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    'احدث الاعلانات',
+                    // textAlign: TextAlign.right,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                style: E,
+                  onPressed: (){},
+                  child: Text('مشاهدة المزيد'))
+              // GridWidget(),
+              // Padding(
+              //   padding: EdgeInsets.all(10),
+              //   child: GridView.count(
+              //     shrinkWrap: false,
+              //     crossAxisCount: 3,
+              //     mainAxisSpacing: 4.0,
+              //     crossAxisSpacing: 8.0,
+              //     children: List.generate(6, (index) {
+              //       return Container(
+              //         height: 50,
+              //         width: 50,
+              //         decoration: BoxDecoration(
+              //             color: Colors.black, border: Border.all()),
+              //         child: Text('Nada'),
+              //       );
+              //     }),
+              //   ),
+              // ),
+              // GridView.builder(
+              //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              //         maxCrossAxisExtent: 200,
+              //         childAspectRatio: 3 / 2,
+              //         crossAxisSpacing: 20,
+              //         mainAxisSpacing: 20),
+              //     itemCount: estates.length,
+              //     itemBuilder: (BuildContext ctx, index) {
+              //       return Container(
+              //         alignment: Alignment.center,
+              //         child: Text(estates[index]),
+              //         decoration: BoxDecoration(
+              //             color: Colors.amber,
+              //             borderRadius: BorderRadius.circular(15)),
+              //       );
+              //     }),
+            ],
+          ),
         ),
       ),
 
