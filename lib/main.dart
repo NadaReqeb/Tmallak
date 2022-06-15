@@ -14,6 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, child) {
+        return Directionality(textDirection: TextDirection.rtl, child: child!);
+      },
       title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Tajawal',
@@ -21,14 +24,13 @@ class MyApp extends StatelessWidget {
       ),
       home: SplashScreen(),
       debugShowCheckedModeBanner: false,
-      navigatorKey: RouterHelper.routerHelper.routerKey,    );
+      navigatorKey: RouterHelper.routerHelper.routerKey,
+    );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
-
-  
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -52,7 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       
         title: Text('jhu'),
       ),
       body: Center(
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), 
+      ),
     );
   }
 }

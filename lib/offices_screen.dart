@@ -7,14 +7,14 @@ import 'package:tmallak/map_screen.dart';
 import 'package:tmallak/profile_screen.dart';
 import 'package:tmallak/router_helper.dart';
 
-class DescriptionScreen extends StatefulWidget {
-  const DescriptionScreen({Key? key}) : super(key: key);
+class OfficeScreen extends StatefulWidget {
+  const OfficeScreen({Key? key}) : super(key: key);
 
   @override
-  State<DescriptionScreen> createState() => _DescriptionScreenState();
+  State<OfficeScreen> createState() => _OfficeScreenState();
 }
 
-class _DescriptionScreenState extends State<DescriptionScreen> {
+class _OfficeScreenState extends State<OfficeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,7 +26,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
         elevation: 1,
         centerTitle: true,
         title: Text(
-          'من نحن',
+          'المكاتب',
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -45,7 +45,8 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                RouterHelper.routerHelper.routingToSpecificWidget(HomePage());
+                RouterHelper.routerHelper
+                    .routingToSpecificWidget(ProfileScreen());
               },
               icon: Icon(Icons.arrow_forward_ios))
         ],
@@ -261,29 +262,28 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
           ],
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: SingleChildScrollView(
-            child: Column(
-          children: <Widget>[
-            Image.asset('assets/images/logo.png'),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  ' نحن دليل لبنان العقاري الأول والاكبر والأكثر شهرة في لبنان وفيه تجد الإعلانات الخاصة بعقارات لبنان بمختلف أنواعها. نساعدك بالبحث عن شقق للايجار او بيوت للبيع او أراضي للبدل او غير ذلك.'),
-            ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  'سواء كنت مواطنا او مقيما تبحث عن عقار في لبنان للايجار، للبيع او للبدل او كنت دلال او وسيط عقاري وتحاول عقد صفقات عقارية، فإن زيارتك لدليل عقارات الكويت هي الخطوة الأولى لتحقيق هدفك بسرعه وبسهوله، فنحن نقدم الحلول العقارية بشكل متطور وحديث على شكل موقع الكتروني وكذلك تطبيق موبايل متوفر على اجهزة الاندرويد او الايفون.'),
-            ),
-            Text(
-                style: TextStyle(fontWeight: FontWeight.bold),
-                'نقدم خدماتنا بشكل مجاني للباحثين عن عقار للشراء او للاستئجار، ولسنا وسيط عقاري ولا نتدخل بأي شكل من الاشكال بين البائع والمشتري من استفسارات او مفاوضات واتفاقيات. ولا نتقاضى أي عمولة أو رسوم على الصفقات العقارية سواء كانت للايجار او للبيع او للبدل أو غيرها من الصفقات.')
-          ],
-        )),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Stack(children: [
+                  Image.asset('assets/images/officeGroup.png'),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30, right: 25),
+                    child: Text(
+                      'اشترك بعضوية مكتب',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                  
+                ])
+              ]),
+        ),
       ),
     ));
   }
