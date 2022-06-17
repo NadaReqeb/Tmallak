@@ -11,7 +11,7 @@ class Advertisement extends StatefulWidget {
 }
 
 class _AdvertisementState extends State<Advertisement> {
-  String?  value='شقة'  ;
+  String?  value='شقة'    ;
   List<String> estates = [
     'بيت',
     'شقة',
