@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:tmallak/Advertisement.dart';
+import 'package:tmallak/buildDrawer.dart';
 import 'package:tmallak/contact.dart';
 import 'package:tmallak/description.dart';
 import 'package:tmallak/gridview.dart';
 import 'package:tmallak/map_screen.dart';
+import 'package:tmallak/offices_screen.dart';
+import 'package:tmallak/paying.dart';
 import 'package:tmallak/profile_screen.dart';
 import 'package:tmallak/router_helper.dart';
 
@@ -19,6 +23,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool loved = false;
+  List icons = [
+    'assets/images/home.png',
+    'assets/images/apartment.png',
+    'assets/images/landscape.png',
+    'assets/images/commercial.png',
+    'assets/images/farm.png',
+    'assets/images/chalet.png',
+    'assets/images/building.png',
+    'assets/images/room.png'
+  ];
   List estates = [
     'بيت',
     'شقة',
@@ -49,459 +64,464 @@ class _HomePageState extends State<HomePage> {
     // var _selectedIndex;
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 60,
-        backgroundColor: Colors.white,
-        elevation: 1,
-        centerTitle: true,
-        title: Text(
-          'الرئيسية',
-          style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1),
-        ),
-        iconTheme: IconThemeData(
-          size: 25, //change size on your need
-          color: Colors.black, //change color on your need
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {}, icon: Icon(Icons.notifications_outlined)),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.message_outlined),
-          )
-        ],
-      ),
-      drawer: Drawer(
-        width: 300,
-        backgroundColor: Colors.white,
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 30,
-            ),
-            GestureDetector(
-              child: Image.asset(
-                'assets/images/profilePic.png',
-                height: 70,
-                width: 70,
-              ),
-              onTap: () {
-                RouterHelper.routerHelper
-                    .routingToSpecificWidget(ProfileScreen());
-              },
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Text(
-                "سارة أبو دقة",
-                style: TextStyle(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            toolbarHeight: 60,
+            backgroundColor: Colors.white,
+            elevation: 1,
+            centerTitle: true,
+            title: Text(
+              'الرئيسية',
+              style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
-                ),
-              ),
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1),
             ),
-            SizedBox(height: 6),
-            Align(
-              alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text('لبنان، بيروت-البقاع'),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Icon(
-                    Icons.location_city,
-                    size: 18,
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
+            iconTheme: IconThemeData(
+              size: 25, //change size on your need
+              color: Colors.black, //change color on your need
             ),
-            SizedBox(
-              height: 40,
-            ),
-            ListTile(
-              title: GestureDetector(
-                child: Text(
-                  'الرئيسية',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                onTap: () {
-                  RouterHelper.routerHelper.routingToSpecificWidget(HomePage());
-                },
-              ),
-              leading: IconButton(
-                color: Colors.blue,
-                onPressed: () {
-                  RouterHelper.routerHelper.routingToSpecificWidget(HomePage());
-                },
-                icon: Icon(Icons.home),
-              ),
-            ),
-            ListTile(
-              title: GestureDetector(
-                child: Text(
-                  'المكاتب',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-              leading: IconButton(
-                color: Colors.blue,
+            actions: [
+              IconButton(
+                  onPressed: () {}, icon: Icon(Icons.notifications_outlined)),
+              IconButton(
                 onPressed: () {},
-                icon: Icon(
-                  Icons.shopping_bag,
-                ),
-              ),
-            ),
-            ListTile(
-              title: GestureDetector(
-                child: Text(
-                  'المفضلة',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-              leading: IconButton(
-                color: Colors.blue,
-                onPressed: () {},
-                icon: Icon(Icons.favorite),
-              ),
-            ),
-            ListTile(
-              title: GestureDetector(
-                child: Text(
-                  'الخريطة',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                onTap: () {
-                  RouterHelper.routerHelper
-                      .routingToSpecificWidget(MapScreen());
-                },
-              ),
-              leading: IconButton(
-                color: Colors.blue,
-                onPressed: () {
-                  RouterHelper.routerHelper
-                      .routingToSpecificWidget(MapScreen());
-                },
-                icon: Icon(
-                  Icons.map,
-                ),
-              ),
-            ),
-            ListTile(
-              title: GestureDetector(
-                child: Text(
-                  'من نحن',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                onTap: () {
-                  RouterHelper.routerHelper
-                      .routingToSpecificWidget(DescriptionScreen());
-                },
-              ),
-              leading: IconButton(
-                color: Colors.blue,
-                onPressed: () {
-                  RouterHelper.routerHelper
-                      .routingToSpecificWidget(DescriptionScreen());
-                },
-                icon: Icon(
-                  Icons.info,
-                ),
-              ),
-            ),
-            ListTile(
-              title: GestureDetector(
-                child: Text(
-                  'تواصل معنا',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                onTap: () {
-                  RouterHelper.routerHelper
-                      .routingToSpecificWidget(ContactScreen());
-                },
-              ),
-              leading: IconButton(
-                icon: Icon(
-                  Icons.chat,
-                ),
-                color: Colors.blue,
-                onPressed: () {
-                  RouterHelper.routerHelper
-                      .routingToSpecificWidget(ContactScreen());
-                },
-              ),
-            ),
-            Spacer(),
-            // SizedBox(
-            //   height: 150,
-            // ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
+                icon: Icon(Icons.message_outlined),
+              )
+            ],
+          ),
+          drawer: buildDrawer(),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Container(
-                    width: 35,
-                    height: 35,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.grey.shade300),
-                    child: GestureDetector(
-                        child: Image.asset(
-                      'assets/images/facebookIcon.png',
-                      // width: 35,
-                      // height: 35,
-                    )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'أهلاً بك، ',
+                        // textAlign: TextAlign.end,
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'دليل عقارات لبنان للبيع والايجار ',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                   SizedBox(
-                    width: 10,
+                    height: 10,
                   ),
                   Container(
-                    width: 35,
-                    height: 35,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.grey.shade300),
-                    child: GestureDetector(
-                        child: Image.asset(
-                      'assets/images/twitterLogo.png',
-                      // width: 35,
-                      // height: 35,
-                    )),
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.asset('assets/images/main.png')),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        // padding: EdgeInsets.only(left: 30),
+                        height: 38,
+                        width: 288,
+                        // width: MediaQuery.of(context).size.width / 1.4,
+                        child: TextFormField(
+                          textAlign: TextAlign.right,
+                          decoration: InputDecoration(
+                            hintStyle: TextStyle(fontSize: 12),
+                            hintText: 'اكتب المنطقة للبحث',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                          height: 38,
+                          width: 49,
+                          decoration: BoxDecoration(
+                            // color: Colors.red,
+                              border: Border.all(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: GestureDetector(
+                            child: Image.asset('assets/images/FilterIcon.png'),
+                            onTap: () {
+                              RouterHelper.routerHelper
+                                  .routingToSpecificWidget(FilterScreen());
+                            },
+                          )),
+                    ],
                   ),
                   SizedBox(
-                    width: 10,
+                    height: 15,
                   ),
-                  Container(
-                    width: 35,
-                    height: 35,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.grey.shade300),
-                    child: GestureDetector(
-                        child: Image.asset(
-                      'assets/images/instagramLogo.png',
-                      // width: 30,
-                      // height: 30,
-                    )),
-                  )
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'نوع العقار',
+                        // textAlign: TextAlign.right,
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4,
+                          mainAxisSpacing: 8,
+                          crossAxisSpacing: 4),
+                      itemCount: 8,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(3),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                color: Colors.grey,
+                                width: 1.0,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 9),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    icons[index],
+                                    height: 40,
+                                    width: 40,
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Center(
+                                      child: Text(
+                                        estates[index],
+                                        style: TextStyle(fontWeight: FontWeight.w500),
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'احدث الاعلانات',
+                        // textAlign: TextAlign.right,
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        height: 100,
+                        width: double.infinity,
+                        child: Card(
+                            margin:
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                            child: Padding(
+                              padding: const EdgeInsets.all(18),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/adver1.png',
+                                    height: 40,
+                                    width: 40,
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text('بيت للبيع في جنوب اللبان'),
+                                      Text('9 ساعه'),
+                                      Text('للايجار فيلا في بيروت'),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        loved = !loved;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.favorite,
+                                      color:
+                                      loved ? Color(0xffDC180F) : Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+                      Container(
+                        height: 100,
+                        width: double.infinity,
+                        child: Card(
+                            margin:
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                            child: Padding(
+                              padding: const EdgeInsets.all(18),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/adver2.png',
+                                    height: 40,
+                                    width: 40,
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text('بيت للبيع في جنوب اللبان'),
+                                      Text('9 ساعه'),
+                                      Text('للايجار فيلا في بيروت'),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        loved = !loved;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.favorite,
+                                      color:
+                                      loved ? Color(0xffDC180F) : Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+                      Container(
+                        height: 100,
+                        width: double.infinity,
+                        child: Card(
+                            margin:
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                            child: Padding(
+                              padding: const EdgeInsets.all(18),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/adver3.png',
+                                    height: 40,
+                                    width: 40,
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text('بيت للبيع في جنوب اللبان'),
+                                      Text('9 ساعه'),
+                                      Text('للايجار فيلا في بيروت'),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        loved = !loved;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.favorite,
+                                      color:
+                                      loved ? Color(0xffDC180F) : Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+                      Container(
+                        height: 100,
+                        width: double.infinity,
+                        child: Card(
+                            margin:
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                            child: Padding(
+                              padding: const EdgeInsets.all(18),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/adver1.png',
+                                    height: 40,
+                                    width: 40,
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text('بيت للبيع في جنوب اللبان'),
+                                      Text('9 ساعه'),
+                                      Text('للايجار فيلا في بيروت'),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        loved = !loved;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.favorite,
+                                      color:
+                                      loved ? Color(0xffDC180F) : Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color.fromARGB(255, 1, 112, 202)),
+                      width: MediaQuery.of(context).size.width,
+                      child: FlatButton(
+                        child: Text(
+                          'مشاهدة المزيد',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          // signIn(emailController.text, passwordController.text);
+
+                          RouterHelper.routerHelper
+                              .routingToSpecificWidget(Advertisement());
+                          },
+
+                      ),
+                    ),
+                  ),
+                  // GridWidget(),
+                  // Padding(
+                  //   padding: EdgeInsets.all(10),
+                  //   child: GridView.count(
+                  //     shrinkWrap: false,
+                  //     crossAxisCount: 3,
+                  //     mainAxisSpacing: 4.0,
+                  //     crossAxisSpacing: 8.0,
+                  //     children: List.generate(6, (index) {
+                  //       return Container(
+                  //         height: 50,
+                  //         width: 50,
+                  //         decoration: BoxDecoration(
+                  //             color: Colors.black, border: Border.all()),
+                  //         child: Text('Nada'),
+                  //       );
+                  //     }),
+                  //   ),
+                  // ),
+                  // GridView.builder(
+                  //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  //         maxCrossAxisExtent: 200,
+                  //         childAspectRatio: 3 / 2,
+                  //         crossAxisSpacing: 20,
+                  //         mainAxisSpacing: 20),
+                  //     itemCount: estates.length,
+                  //     itemBuilder: (BuildContext ctx, index) {
+                  //       return Container(
+                  //         alignment: Alignment.center,
+                  //         child: Text(estates[index]),
+                  //         decoration: BoxDecoration(
+                  //             color: Colors.amber,
+                  //             borderRadius: BorderRadius.circular(15)),
+                  //       );
+                  //     }),
                 ],
               ),
-            )
-          ],
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'دليل عقارات لبنان للبيع والايجار ',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  '،أهلاً بك',
-                  // textAlign: TextAlign.end,
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset('assets/images/main.png')),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Container(
-                  height: 38,
-                  width: 49,
-                  decoration: BoxDecoration(
-                      // color: Colors.red,
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: IconButton(
-                      icon: Icon(Icons.edit),
-                      onPressed: () {},
-                    ),
-                  ),
-                ),
-                Spacer(),
-                Container(
-                  // padding: EdgeInsets.only(left: 30),
-                  height: 38,
-                  width: 288,
-                  // width: MediaQuery.of(context).size.width / 1.4,
-                  child: TextFormField(
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(fontSize: 12),
-                      hintText: 'اكتب المنطقة للبحث',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  'نوع العقار',
-                  // textAlign: TextAlign.right,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            // Container(
-            //   child: GridView.builder(
-            //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //           crossAxisCount:
-            //               (Orientation == Orientation.portrait ? 2 : 3),
-            //           mainAxisSpacing: 5,
-            //           crossAxisSpacing: 5),
-            //       itemCount: 5,
-            //       itemBuilder: (context, index) {
-            //         return Container(
-            //           decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(15),
-            //               color: Colors.red),
-            //           child: Column(
-            //             children: [
-            //               Image.asset(
-            //                 'assets/images/Facebook_Logo.png',
-            //                 height: 150,
-            //                 width: 150,
-            //               ),
-            //               Row(
-            //                 children: [
-            //                   Expanded(child: Text('chair', maxLines: 1)),
-            //                 ],
-            //               )
-            //             ],
-            //           ),
-            //         );
-            //       }),
-            // )
-            // GridWidget(),
-            // Padding(
-            //   padding: EdgeInsets.all(10),
-            //   child: GridView.count(
-            //     shrinkWrap: false,
-            //     crossAxisCount: 3,
-            //     mainAxisSpacing: 4.0,
-            //     crossAxisSpacing: 8.0,
-            //     children: List.generate(6, (index) {
-            //       return Container(
-            //         height: 50,
-            //         width: 50,
-            //         decoration: BoxDecoration(
-            //             color: Colors.black, border: Border.all()),
-            //         child: Text('Nada'),
-            //       );
-            //     }),
-            //   ),
-            // ),
-            // GridView.builder(
-            //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            //         maxCrossAxisExtent: 200,
-            //         childAspectRatio: 3 / 2,
-            //         crossAxisSpacing: 20,
-            //         mainAxisSpacing: 20),
-            //     itemCount: estates.length,
-            //     itemBuilder: (BuildContext ctx, index) {
-            //       return Container(
-            //         alignment: Alignment.center,
-            //         child: Text(estates[index]),
-            //         decoration: BoxDecoration(
-            //             color: Colors.amber,
-            //             borderRadius: BorderRadius.circular(15)),
-            //       );
-            //     }),
-          ],
-        ),
-      ),
+          ),
 
-      // bottomNavigationBar: BottomNav6(),
-      bottomNavigationBar: BottomNavyBar(
-        selectedIndex: _currentIndex,
-        onItemSelected: (index) {
-          setState(() => _currentIndex = index);
-          _pageController.jumpToPage(index);
-        },
-        items: <BottomNavyBarItem>[
-          BottomNavyBarItem(
-              title: Text('الملف الشخصي'), icon: Icon(Icons.person)),
-          BottomNavyBarItem(title: Text('الخريطة'), icon: Icon(Icons.map)),
-          BottomNavyBarItem(title: Text('إضافة'), icon: Icon(Icons.add)),
-          BottomNavyBarItem(title: Text('المكاتب'), icon: Icon(Icons.work)),
-          BottomNavyBarItem(title: Text('الرئيسية'), icon: Icon(Icons.home)),
-        ],
-      ),
+          // bottomNavigationBar: BottomNav6(),
+          bottomNavigationBar: BottomNavyBar(
+            selectedIndex: _currentIndex,
+            onItemSelected: (index) {
+              setState(() => _currentIndex = index);
+              _pageController.jumpToPage(index);
+            },
+            items: <BottomNavyBarItem>[
+              BottomNavyBarItem(
+                  title: Text('الملف الشخصي'), icon: Icon(Icons.person)),
+              BottomNavyBarItem(title: Text('الخريطة'), icon: Icon(Icons.map)),
+              BottomNavyBarItem(title: Text('إضافة'), icon: Icon(Icons.add)),
+              BottomNavyBarItem(title: Text('المكاتب'), icon: Icon(Icons.work)),
+              BottomNavyBarItem(title: Text('الرئيسية'), icon: Icon(Icons.home)),
+            ],
+          ),
 
-      // bottomNavigationBar: BottomNavyBar(
-      //   selectedIndex: _selectedIndex,
-      //   showElevation: true,
-      //   onItemSelected: (index) => setState(
-      //     () {
-      //       _selectedIndex = index;
-      //       _pageController.animateToPage(index,
-      //           duration: Duration(milliseconds: 300), curve: Curves.ease);
-      //     },
-      //   ),
-      //   items: [
-      //     BottomNavyBarItem(
-      //         icon: Icon(Icons.apps),
-      //         title: Text('home'),
-      //         activeColor: Colors.red),
-      //     BottomNavyBarItem(
-      //         icon: Icon(Icons.people),
-      //         title: Text('users'),
-      //         activeColor: Colors.red),
-      //     BottomNavyBarItem(
-      //         icon: Icon(Icons.message),
-      //         title: Text('messages'),
-      //         activeColor: Colors.red),
-      //     BottomNavyBarItem(
-      //         icon: Icon(Icons.settings),
-      //         title: Text('settings'),
-      //         activeColor: Colors.red)
-      //   ],
-      // ),
-    ));
+          // bottomNavigationBar: BottomNavyBar(
+          //   selectedIndex: _selectedIndex,
+          //   showElevation: true,
+          //   onItemSelected: (index) => setState(
+          //     () {
+          //       _selectedIndex = index;
+          //       _pageController.animateToPage(index,
+          //           duration: Duration(milliseconds: 300), curve: Curves.ease);
+          //     },
+          //   ),
+          //   items: [
+          //     BottomNavyBarItem(
+          //         icon: Icon(Icons.apps),
+          //         title: Text('home'),
+          //         activeColor: Colors.red),
+          //     BottomNavyBarItem(
+          //         icon: Icon(Icons.people),
+          //         title: Text('users'),
+          //         activeColor: Colors.red),
+          //     BottomNavyBarItem(
+          //         icon: Icon(Icons.message),
+          //         title: Text('messages'),
+          //         activeColor: Colors.red),
+          //     BottomNavyBarItem(
+          //         icon: Icon(Icons.settings),
+          //         title: Text('settings'),
+          //         activeColor: Colors.red)
+          //   ],
+          // ),
+        ));
   }
+
+
 }
 
 // class BottomNav6 extends StatefulWidget {
